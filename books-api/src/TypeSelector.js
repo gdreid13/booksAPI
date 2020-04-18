@@ -11,9 +11,9 @@ class TypeSelector extends Component {
   render () {
 
     return (
-      <form>
+      <form onSubmit={this.props.handleSubmit}>
         <label htmlFor="filter">Print Type:</label>
-        <select id="filter" name="filter">
+        <select id="filter" name="filter" ref={this.props.filterInput} onChange={e => this.props.setFilter(e.target.value)}>
           <option value="None">Select one...</option>
           <option value={"\u0026"+"filter=partial"}>Only view options with partial previews</option>
           <option value={"\u0026"+"filter=full"}>Only view options with full previews</option>
@@ -23,7 +23,7 @@ class TypeSelector extends Component {
         </select>
 
         <label htmlFor="printType">Book Type:</label>
-        <select id="printType" name="printType">
+        <select id="printType" name="printType" ref={this.props.printTypeInput} onChange={e => this.props.setPrintType(e.target.value)}>
           <option value="">Select one...</option>
           <option value={"\u0026"+"printType=books"}>Books</option>
           <option value={"\u0026"+"printType=magazines"}>Magazines</option>
